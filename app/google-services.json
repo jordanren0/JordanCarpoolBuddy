@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "773056724452",
+    "project_id": "jordancarpoolbuddy",
+    "storage_bucket": "jordancarpoolbuddy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773056724452:android:9f6e5e26dfcd8157075bf1",
+        "android_client_info": {
+          "package_name": "com.example.jordancarpoolbuddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6PTjTiU11ylnvkIcRScaq4S7VAT3tBeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
