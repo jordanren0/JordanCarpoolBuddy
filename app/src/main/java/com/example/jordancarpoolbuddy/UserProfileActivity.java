@@ -61,6 +61,7 @@ public class UserProfileActivity extends AppCompatActivity {
         startActivity(new Intent(this, UserProfileActivity.class));
     }
 
-
-
+    public void whyCarpool(View v){
+        startActivity(new Intent(this, WhyCarpool.class));
+    }
 }

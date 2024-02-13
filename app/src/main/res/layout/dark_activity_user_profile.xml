@@ -87,4 +87,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ViewVehiclesButton" />
+
+    <Button
+        android:id="@+id/whyCarpool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:onClick="whyCarpool"
+        android:text="Why Carpool"
+        android:textColor="#9E9E9E"
+        android:backgroundTint="#262626"
+        app:layout_constraintBottom_toTopOf="@+id/ViewVehiclesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailInfo"
+        app:layout_constraintVertical_bias="0.058" />
 </androidx.constraintlayout.widget.ConstraintLayout>
