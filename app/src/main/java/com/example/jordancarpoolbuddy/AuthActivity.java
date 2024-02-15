@@ -20,7 +20,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class AuthActivity extends AppCompatActivity {
 
     public FirebaseAuth mAuth;
@@ -28,6 +31,13 @@ public class AuthActivity extends AppCompatActivity {
     private EditText emailField;
     private EditText passwordField;
 
+    /**
+     * This method navigates the user to the AuthActivity page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +63,15 @@ public class AuthActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method signs the user in to the program, and displays a Toast error if the sign in fails
+     * @param v
+     */
     public void signIn(View v) {
         System.out.println("Log in");
         String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
-        System.out.println(String.format("Email: %s and Password: %s", emailString, passwordString));
+        System.out.printf("Email: %s and Password: %s%n", emailString, passwordString);
         mAuth.signInWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -81,11 +95,19 @@ public class AuthActivity extends AppCompatActivity {
 //        firestore.collection("users").document("1").set(emailString);
     }
 
+    /**
+     * This method sets an intent to navigate the user to the Sign Up page
+     * @param v
+     */
     public void gotoSignUp(View v) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method sets an intent to navigate the user to the User Profile page
+     * @param currentUser
+     */
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
             Intent intent = new Intent(this, UserProfileActivity.class);
@@ -93,6 +115,10 @@ public class AuthActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method changes the theme
+     * @param v
+     */
     public void changeTheme(View v){
         if(ThemeHolder.getCurrentTheme().equals("dark"))  ThemeHolder.setCurrentTheme("light");
         else  ThemeHolder.setCurrentTheme("dark");

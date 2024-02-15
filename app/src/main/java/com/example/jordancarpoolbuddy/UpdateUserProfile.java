@@ -21,6 +21,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class UpdateUserProfile extends AppCompatActivity {
     public FirebaseAuth mAuth;
     public FirebaseFirestore firebase;
@@ -30,6 +34,13 @@ public class UpdateUserProfile extends AppCompatActivity {
     private EditText password;
     private EditText confirmedPass;
 
+    /**
+     * This method navigates the user to the UpdateUserProfile page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +64,11 @@ public class UpdateUserProfile extends AppCompatActivity {
 
     }
 
+    /**
+     * This method allows the user to reset their email and password
+     * A Toast error is displayed if the user does not sign up with a CIS email or if the two passwords do not match
+     * @param v
+     */
     public void reset(View v) {
         String nameString = name.getText().toString();
         String typeString = type.getText().toString();

@@ -19,7 +19,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class VehicleInfoActivity extends AppCompatActivity implements VehicleAdapter.vehicleListener {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
@@ -37,6 +40,13 @@ public class VehicleInfoActivity extends AppCompatActivity implements VehicleAda
     private VehicleAdapter myAdapter;
 
 
+    /**
+     * This method navigates the user to the VehicleInfo page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +77,9 @@ public class VehicleInfoActivity extends AppCompatActivity implements VehicleAda
         getAndPopulateData();
     }
 
+    /**
+     * This method adds all vehicles with their properties to the recycler view
+     */
     public void getAndPopulateData() {
         firebase.collection("Vehicle").whereEqualTo("owner", user.getEmail())
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -106,14 +119,26 @@ public class VehicleInfoActivity extends AppCompatActivity implements VehicleAda
         });
     }
 
+    /**
+     * This method creates an intent that navigates the user to the AddVehicleActivity class
+     * @param v
+     */
     public void toAddVehicle(View v) {
         startActivity(new Intent(this, AddVehicleActivity.class));
     }
 
+    /**
+     * This method creates an intent that navigates the user to the BookVehicleInfo class
+     * @param v
+     */
     public void toBookVehicle(View v) {
         startActivity(new Intent(this, BookVehicleInfo.class));
     }
 
+    /**
+     * This method creates an intent that navigates the user to the VehicleProfileActivity class
+     * @param p
+     */
     @Override
     public void vehicleOnClick(int p) {
         vehicle = vehiclesList.get(p);

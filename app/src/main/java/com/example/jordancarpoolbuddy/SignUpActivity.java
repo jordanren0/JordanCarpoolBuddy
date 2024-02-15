@@ -20,7 +20,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class SignUpActivity extends AppCompatActivity {
 
     public FirebaseAuth mAuth;
@@ -31,6 +34,13 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText password;
 
 
+    /**
+     * This method navigates the user to the SignUpActivity page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +63,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method allows the user to sign up, and displays a Toast error if the user does not sign up with a CIS email
+     * @param v
+     */
     public void signUp(View v) {
         String nameString = name.getText().toString();
         String typeString = type.getText().toString();
@@ -88,6 +102,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * @param currentUser
+     */
     public void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
             Intent intent = new Intent(this, AuthActivity.class);

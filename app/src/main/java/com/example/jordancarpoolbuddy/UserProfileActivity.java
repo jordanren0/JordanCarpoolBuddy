@@ -10,12 +10,22 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class UserProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private TextView userEmail;
 
+    /**
+     * This method navigates the user to the UserProfileActivity page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +47,10 @@ public class UserProfileActivity extends AppCompatActivity {
         userEmail.setText(userEmailText);
     }
 
+    /**
+     * This method signs the user out
+     * @param v
+     */
     public void signOut(View v) {
         mAuth.signOut();
         Intent intent = new Intent(this, AuthActivity.class);
@@ -45,22 +59,38 @@ public class UserProfileActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * This method creates the intent that navigates the user to the VehicleInfoActivity class
+     * @param v
+     */
     public void seeVehicles(View v) {
         startActivity(new Intent(this, VehicleInfoActivity.class));
         System.out.println("Here:");
     }
 
+    /**
+     * This method creates the intent that navigates the user to the UpdateUserProfile class
+     * @param v
+     */
     public void goEditProf(View v) {
         startActivity(new Intent(this, UpdateUserProfile.class));
         System.out.println("Here:");
     }
 
+    /**
+     * This method changes the theme
+     * @param v
+     */
     public void changeTheme(View v){
         if(ThemeHolder.getCurrentTheme().equals("dark"))  ThemeHolder.setCurrentTheme("light");
         else  ThemeHolder.setCurrentTheme("dark");
         startActivity(new Intent(this, UserProfileActivity.class));
     }
 
+    /**
+     * This method creates the intent that navigates the user to the WhyCarpool class
+     * @param v
+     */
     public void whyCarpool(View v){
         startActivity(new Intent(this, WhyCarpool.class));
     }

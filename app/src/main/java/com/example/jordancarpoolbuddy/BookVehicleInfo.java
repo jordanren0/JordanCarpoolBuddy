@@ -18,7 +18,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class BookVehicleInfo extends AppCompatActivity implements AllVehicleAdapter.vehicleListener {
 
     private FirebaseAuth mAuth;
@@ -36,6 +39,13 @@ public class BookVehicleInfo extends AppCompatActivity implements AllVehicleAdap
 
     RecyclerView recyclerView;
 
+    /**
+     * This method navigates the user to the BookVehicleInfo page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +78,9 @@ public class BookVehicleInfo extends AppCompatActivity implements AllVehicleAdap
         getAndPopulateData();
     }
 
+    /**
+     * This method adds all vehicles with their properties to the recycler view
+     */
     public void getAndPopulateData() {
         firebase.collection("Vehicle").
                 get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -104,6 +117,10 @@ public class BookVehicleInfo extends AppCompatActivity implements AllVehicleAdap
         });
     }
 
+    /**
+     * This method creates an intent that navigates the user to the BookVehicleProfile class
+     * @param p
+     */
     public void vehicleOnClick(int p) {
         vehicle = vehiclesList.get(p);
         startActivity(new Intent(this, BookVehicleProfile.class));

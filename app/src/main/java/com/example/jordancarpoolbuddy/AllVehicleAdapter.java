@@ -8,7 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class AllVehicleAdapter extends RecyclerView.Adapter<AllVehicleHolder> {
     ArrayList<String> vmodelData;
     ArrayList<String> vtypeData;
@@ -17,6 +20,14 @@ public class AllVehicleAdapter extends RecyclerView.Adapter<AllVehicleHolder> {
 
     private vehicleListener listener;
 
+    /**
+     * This method is a constructor that intializes all of the properties
+     * @param modelData
+     * @param typeData
+     * @param statusData
+     * @param capacityData
+     * @param listener1
+     */
     public AllVehicleAdapter(ArrayList modelData, ArrayList typeData, ArrayList statusData, ArrayList capacityData, vehicleListener listener1) {
         vmodelData = modelData;
         vtypeData = typeData;
@@ -25,6 +36,13 @@ public class AllVehicleAdapter extends RecyclerView.Adapter<AllVehicleHolder> {
         listener = listener1;
     }
 
+    /**
+     * @param parent The ViewGroup into which the new View will be added after it is bound to
+     *               an adapter position.
+     * @param viewType The view type of the new View.
+     *
+     * @return ALlVehicleHolder
+     */
     @NonNull
     @Override
     public AllVehicleHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,6 +61,11 @@ public class AllVehicleAdapter extends RecyclerView.Adapter<AllVehicleHolder> {
         return new AllVehicleHolder(myView, listener);
     }
 
+    /**
+     * @param holder The ViewHolder which should be updated to represent the contents of the
+     *        item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(@NonNull AllVehicleHolder holder, int position) {
         holder.modelText.setText(vmodelData.get(position));
@@ -51,12 +74,21 @@ public class AllVehicleAdapter extends RecyclerView.Adapter<AllVehicleHolder> {
         holder.capacityText.setText(vcapacityData.get(position));
     }
 
-
+    /**
+     * This method returns the vehicle size
+     * @return int
+     */
     @Override
     public int getItemCount() {
         return vmodelData.size();
     }
 
+    /**
+     * @param modelData
+     * @param typeData
+     * @param statusData
+     * @param capacityData
+     */
     public void newData(ArrayList modelData, ArrayList typeData, ArrayList statusData, ArrayList capacityData) {
         vmodelData = modelData;
         vtypeData = typeData;

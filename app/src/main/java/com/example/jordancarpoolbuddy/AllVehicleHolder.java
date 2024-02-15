@@ -6,6 +6,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class AllVehicleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     protected TextView modelText;
@@ -15,6 +19,11 @@ public class AllVehicleHolder extends RecyclerView.ViewHolder implements View.On
     protected TextView capacityText;
     AllVehicleAdapter.vehicleListener listener;
 
+    /**
+     * This method is a constructor that initializes all of the properties
+     * @param itemView
+     * @param listener1
+     */
     public AllVehicleHolder(@NonNull View itemView, AllVehicleAdapter.vehicleListener listener1) {
         super(itemView);
 
@@ -27,6 +36,9 @@ public class AllVehicleHolder extends RecyclerView.ViewHolder implements View.On
         itemView.setOnClickListener(this);
     }
 
+    /**
+     * @param view The view that was clicked.
+     */
     public void onClick(View view) {
         listener.vehicleOnClick(getAdapterPosition());
     }

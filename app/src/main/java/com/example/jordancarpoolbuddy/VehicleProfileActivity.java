@@ -15,7 +15,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class VehicleProfileActivity extends AppCompatActivity {
     TextView modelTextView;
     TextView typeTextView;
@@ -28,6 +31,13 @@ public class VehicleProfileActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore fb;
 
+    /**
+     * This method navigates the user to the VehicleProfile page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +79,10 @@ public class VehicleProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method sets the current vehicle to not avaliable
+     * @param v
+     */
     public void closeV(View v) {
         fb.collection("Vehicle").whereEqualTo("model", chosen.getModel())
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -84,6 +98,10 @@ public class VehicleProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method sets the current vehicle to avaliable
+     * @param v
+     */
     public void openV(View v) {
         fb.collection("Vehicle").whereEqualTo("model", chosen.getModel())
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

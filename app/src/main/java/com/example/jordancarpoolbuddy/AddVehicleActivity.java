@@ -12,8 +12,10 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-
+/**
+ * @author Jordan Ren
+ * @version 1.0
+ */
 public class AddVehicleActivity extends AppCompatActivity {
 
     EditText model;
@@ -24,7 +26,13 @@ public class AddVehicleActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebase;
 
-
+    /**
+     * This method navigates the user to the AddVehicle page depending on the theme
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +58,10 @@ public class AddVehicleActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method displays a Toast error if the user does not fill out all the boxes
+     * @return boolean
+     */
     public boolean formValid() {
         if (model != null && type != null && capacity != null && iD != null && price != null) {
             return true;
@@ -58,6 +70,10 @@ public class AddVehicleActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * This method allows the user to add a new vehicle, dependant on the user's input of the model, type, capacity and price
+     * @param v
+     */
     public void addNewVehicle(View v) {
         if (formValid()) {
             String vModel = model.getText().toString();
@@ -77,10 +93,6 @@ public class AddVehicleActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Please Log In First", Toast.LENGTH_SHORT).show();
             }
             startActivity(new Intent(this, VehicleInfoActivity.class));
-
         }
-
     }
-
-
 }
